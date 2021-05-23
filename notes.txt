@@ -1,0 +1,9 @@
+//array indexing
+menu[3] : access the fourth element in the menu
+menu[3][0] : access the first object in the list of menu[3]
+menu[3][0].name : access the name of the first object in menu[3]
+menu[3][0].price : access the price of the first object in menu[3]
+
+//print
+console.log(menu[3][0].name);
+console.log(menu[3][0].price);
