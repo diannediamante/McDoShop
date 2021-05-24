@@ -7,3 +7,10 @@ menu[3][0].price : access the price of the first object in menu[3]
 //print
 console.log(menu[3][0].name);
 console.log(menu[3][0].price);
+
+
+
+to be clear po, lahat po na parts na napunta sa akin: Java Script for
+1. add to cart
+2.  computation of prices
+3. checkout page
