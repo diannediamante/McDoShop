@@ -10,13 +10,29 @@
 <body>
     <h1>Mc Donald's</h1>
     <!-- form for the menu -->
-    <form id="form_menu"> 
+    <form id="form_menu" method="POST" action="checkout.php"> 
           <!-- container for the menu -->
+        Name: <br></rb><input id="c_name" type="text" name="name" value = "" onChange="updateInfo()"><br>
+        Address: <br><input id="c_addr" type="text" name="name" value = "" onChange="updateInfo()"><br>
+        Email: <br><input id="c_mail" type="text" name="email" value = "" onChange="updateInfo()"><br><br>
         <div id="menu_cont">
             <!-- adds checkboxes dynamically -->
         </div>
 
+        <b>Order Details:</b><br>
+        Customer Name: <label id="cust_name"></label><br>
+        Customer Address: <label id="cust_addr"></label><br>
+        Customer Email: <label id="cust_mail"></label><br>
+
+        <div id="curr_order">    
+            <!-- list of orders -->
+        </div>
+
+        <b>Total Order Amount: </b><label id="tot_txt">Php 0</label>
+        <br><br>
+
         <input type="submit" value="Submit Order">
+        <!-- <input type="submit" value="Submit Order" onclick="onSubmit()"> -->
     </form>
     <br><br>
 </body>

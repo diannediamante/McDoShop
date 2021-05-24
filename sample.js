@@ -56,7 +56,7 @@ for (i = 0; i < menu.length; i++){
         x.setAttribute("type", "checkbox");         //set input type as checkbox
         x.setAttribute("class", "menu");            //set class as menu
         x.setAttribute("onclick", "checkItem()");   //add click event
-        x.setAttribute("name", menu[i][j].name);        //set name as the name of the item
+        x.setAttribute("name", menu[i][j].name);    //set name as the name of the item
         x.setAttribute("value", menu[i][j].price.toFixed(2).toString());    //set value as the price of the item
        
         container.appendChild(x);       //add checkbox to div, there' no label yet
@@ -65,15 +65,42 @@ for (i = 0; i < menu.length; i++){
 
         var price = document.createElement("label");        //add label tag
         var price_txt = document.createTextNode("Php " + x.value);  //add text
-        price.setAttribute("class", "price_lbl");           //set class name to "price_lbl"
-        price.appendChild(price_txt);                       //add price label
+        price.setAttribute("class", "price_lbl");               //set class name to "price_lbl"
+        price.appendChild(price_txt);                           //add price label
     
-        container.appendChild(lbl);                         //add item name to div
-        container.appendChild(price);                       //add item price ot div
+        container.appendChild(lbl);                             //add item name to div
+        container.appendChild(price);                           //add item price ot div
         container.appendChild(document.createElement("br"));    //add new line
         container.appendChild(document.createElement("br"));    //add new line
     }
-    container.appendChild(document.createElement("br"));    //add new line
+    container.appendChild(document.createElement("br"));        //add new line
+}
+
+//iupdate customer info
+function updateInfo(){
+    document.getElementById("cust_name").innerHTML = document.getElementById("c_name").value; 
+    document.getElementById("cust_addr").innerHTML = document.getElementById("c_addr").value; 
+    document.getElementById("cust_mail").innerHTML = document.getElementById("c_mail").value; 
+}
+
+function updateCartList(total){
+    // refresh cart list
+    document.getElementById("curr_order").innerHTML = "";
+    
+    //create an unordered list
+    var ul_list = document.createElement("ul");
+    ul_list.setAttribute("id", "cart-list");
+    (document.getElementById("curr_order")).appendChild(ul_list);
+    
+    //update list of orders
+    var node = document.getElementById("cart-list");
+    for (k = 0; k < cart.length; k++){
+        var newNode = document.createElement("li");
+        newNode.appendChild(document.createTextNode(cart[k].name + "  [" + cart[k].price + "]" ));
+        node.appendChild(newNode);
+    }
+    //update total amount
+    document.getElementById("tot_txt").innerHTML = "Php " + total.toString();
 }
 
 function checkItems(){      //check selected items
@@ -95,6 +122,21 @@ function checkItems(){      //check selected items
 
 function checkItem(){   //update cart and total amount
     //get total sum
-    console.log("Total: " + checkItems().toString());
+    var total = checkItems();
+    console.log("Total: " + total.toString());
     console.log(cart);
+    updateCartList(total);
+}
+
+function onSubmit(){
+    var objName = {
+        "cust_name":document.getElementById("c_name").value,
+        "cust_addr":document.getElementById("c_addr").value,
+        "cust_email":document.getElementById("c_mail").value,
+        "cust_order":cart
+    }
+    console.log(objName);
+
+    var stringy = JSON.stringify(objName);
+    console.log(stringy);
 }

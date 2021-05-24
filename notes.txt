@@ -9,8 +9,14 @@ console.log(menu[3][0].name);
 console.log(menu[3][0].price);
 
 
+how to create an object:
+    var objName = {
+        "cust_name":document.getElementById("c_name").value,
+        "cust_addr":document.getElementById("c_addr").value,
+        "cust_email":document.getElementById("c_mail").value,
+        "cust_order":cart
+    }
 
-to be clear po, lahat po na parts na napunta sa akin: Java Script for
-1. add to cart
-2.  computation of prices
-3. checkout page
+
+stringify:
+    JSON.stringify(objName)
